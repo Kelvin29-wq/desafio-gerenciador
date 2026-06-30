@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard Administrativo</title>
+
+  <link rel="stylesheet" href="css/admin.css">
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>🖥️ Sistema de Chamados</h1>
+
+    <button id="btnSair">Sair</button>
+
+  </header>
+
+  <section class="boas-vindas">
+
+    <h2>Bem-vindo, Administrador 👋</h2>
+
+    <p>Gerencie os chamados técnicos da empresa.</p>
+
+  </section>
+
+  <main>
+
+    <section class="cards">
+
+      <div class="card-info total">
+
+        <h3>Total</h3>
+
+        <span id="totalChamados">0</span>
+
+      </div>
+
+      <div class="card-info aberto">
+
+        <h3>Aberto</h3>
+
+        <span id="totalAbertos">0</span>
+
+      </div>
+
+      <div class="card-info atendimento">
+
+        <h3>Em Atendimento</h3>
+
+        <span id="totalAtendimento">0</span>
+
+      </div>
+
+      <div class="card-info finalizado">
+
+        <h3>Finalizados</h3>
+
+        <span id="totalFinalizados">0</span>
+
+      </div>
+
+    </section>
+    <div class="top-bar">
+
+      <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou título...">
+
+    </div>
+    <section class="tabela">
+
+      <h2>Chamados</h2>
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>ID</th>
+
+            <th>Nome</th>
+
+            <th>Setor</th>
+
+            <th>Título</th>
+
+            <th>Prioridade</th>
+
+            <th>Status</th>
+
+            <th>Ações</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody id="listaChamados">
+
+        </tbody>
+
+      </table>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    Sistema de Gerenciamento de Chamados
+
+    <br>
+
+    Desenvolvido por Kelvin Rolim © 2026
+
+  </footer>
+
+  <div id="modal" class="modal hidden">
+
+    <div class="modal-content">
+
+      <h2>Editar Chamado</h2>
+
+      <input type="hidden" id="editId">
+
+      <label>Status</label>
+      <select id="editStatus">
+        <option value="Aberto">Aberto</option>
+        <option value="Em_Atendimento">Em Atendimento</option>
+        <option value="Finalizado">Finalizado</option>
+        <option value="Cancelado">Cancelado</option>
+      </select>
+
+      <label>Prioridade</label>
+      <select id="editPrioridade">
+        <option value="Baixa">Baixa</option>
+        <option value="Media">Média</option>
+        <option value="Alta">Alta</option>
+        <option value="Urgente">Urgente</option>
+      </select>
+
+      <label>Descrição</label>
+      <textarea id="editDescricao"></textarea>
+
+      <div class="modal-actions">
+
+        <button onclick="fecharModal()">Cancelar</button>
+
+        <button onclick="salvarEdicao()">Salvar</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="js/api.js"></script>
+
+  <script src="js/admin.js"></script>
+
+</body>
+
+</html>

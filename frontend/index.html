@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Chamados</title>
+
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+  <header>
+
+    <div class="logo">
+      <h1>Sistema de Chamados</h1>
+    </div>
+
+    <nav>
+      <a href="login.html">🔐 Área Administrativa</a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <section class="container">
+
+      <div class="card">
+
+        <h2>Abertura de Chamado Técnico</h2>
+
+        <form id="formChamado">
+
+          <div class="linha">
+
+            <div class="campo">
+              <label for="nome">Nome *</label>
+              <input type="text" id="nome" required>
+            </div>
+
+            <div class="campo">
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" required>
+            </div>
+
+          </div>
+
+          <div class="linha">
+
+            <div class="campo">
+              <label for="telefone">Telefone *</label>
+              <input type="text" id="telefone" required>
+            </div>
+
+            <div class="campo">
+              <label for="setor">Setor *</label>
+              <input type="text" id="setor" required>
+            </div>
+
+          </div>
+
+          <div class="linha">
+
+            <div class="campo">
+              <label for="cep">CEP *</label>
+
+              <div class="buscarCep">
+                <input type="text" id="cep" required>
+                <button type="button" id="btnBuscarCep">Buscar</button>
+              </div>
+
+            </div>
+
+            <div class="campo">
+              <label for="numero">Número *</label>
+              <input type="text" id="numero" required>
+            </div>
+
+          </div>
+
+          <div class="campo">
+            <label for="rua">Rua *</label>
+            <input type="text" id="rua" required>
+          </div>
+
+          <div class="linha">
+
+            <div class="campo">
+              <label for="bairro">Bairro *</label>
+              <input type="text" id="bairro" required>
+            </div>
+
+            <div class="campo">
+              <label for="cidade">Cidade *</label>
+              <input type="text" id="cidade" required>
+            </div>
+
+          </div>
+
+          <div class="linha">
+
+            <div class="campo">
+              <label for="estado">Estado *</label>
+              <input type="text" id="estado" required>
+            </div>
+
+            <div class="campo">
+              <label for="complemento">Complemento</label>
+              <input type="text" id="complemento">
+            </div>
+
+          </div>
+
+          <div class="linha">
+
+            <div class="campo">
+              <label for="prioridade">Prioridade *</label>
+
+              <select id="prioridade" required>
+
+                <option value="">Selecione</option>
+                <option value="Baixa">Baixa</option>
+                <option value="Media">Média</option>
+                <option value="Alta">Alta</option>
+                <option value="Urgente">Urgente</option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+          <div class="campo">
+
+            <label for="titulo">Título do Problema *</label>
+
+            <input type="text" id="titulo" required>
+
+          </div>
+
+          <div class="campo">
+
+            <label for="descricao">Descrição do Problema *</label>
+
+            <textarea id="descricao" rows="6" required></textarea>
+
+          </div>
+
+          <button class="btnEnviar" type="submit">
+
+            Abrir Chamado
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/index.js"></script>
+
+</body>
+
+</html>
