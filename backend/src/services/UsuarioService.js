@@ -13,7 +13,6 @@ class UsuarioService {
       throw new Error("Senha obrigatória");
     }
 
-    // Criptografa a senha antes de salvar
     usuario.senha = await bcrypt.hash(usuario.senha, 10);
 
     return repository.criar(usuario);
