@@ -1,0 +1,95 @@
+# 📋 Sistema de Gerenciamento de Chamados
+
+Um sistema web para abertura, acompanhamento e gerenciamento de chamados técnicos, desenvolvido para facilitar o controle de solicitações de suporte.
+
+## 🚀 Tecnologias Utilizadas
+
+### Back-end
+- Node.js
+- Express.js
+
+### Front-end
+- HTML5
+- CSS3
+- JavaScript
+
+### Banco de Dados
+- MySQL
+
+
+
+---
+
+## ✨ Funcionalidades
+
+- ✅ Abertura de chamados técnicos
+- ✅ Cadastro de usuários
+- ✅ Listagem de chamados
+- ✅ Atualização de informações
+- ✅ Gerenciamento de chamados
+- ✅ Integração com banco de dados MySQL
+- ✅ Interface responsiva
+- ✅ Comunicação entre Front-end e Back-end por meio de rotas da API
+
+---
+
+## 🗄️ Banco de Dados
+
+O sistema utiliza o **MySQL** para armazenar as informações da aplicação.
+
+Exemplos de dados armazenados:
+
+- Usuários
+- Chamados
+- Categorias
+- Status
+- Datas de criação e atualização
+
+---
+
+## ⚙️ Como Executar o Projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+```
+
+### 2. Entre na pasta
+
+```bash
+cd seu-repositorio
+```
+
+### 3. Instale as dependências
+
+```bash
+npm install
+```
+
+### 4. Configure o arquivo `.env`
+
+Crie um arquivo `.env` na raiz do projeto com as informações do banco de dados:
+
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=sua_senha
+DB_NAME=nome_do_banco
+PORT=3000
+```
+
+### 5. Execute o projeto
+
+```bash
+npm start
+```
+
+Ou, durante o desenvolvimento:
+
+```bash
+npm run dev
+```
+
+---
+
