@@ -27,15 +27,40 @@ model Login {
 model Chamado {
   id Int @id @default(autoincrement())
 
-  titulo String
+  nome     String
+  email    String
+  telefone String
 
+  setor String
+
+  titulo    String
   descricao String
 
-  prioridade String
+  prioridade Prioridade
 
-  status String
+  cep         String
+  rua         String
+  numero      String
+  complemento String?
+  bairro      String
+  cidade      String
+  estado      String
 
+  status    Status
   createdAt DateTime @default(now())
-
   updatedAt DateTime @updatedAt
+}
+
+enum Status {
+  Aberto
+  Em_Atendimento
+  Finalizado
+  Cancelado
+}
+
+enum Prioridade {
+  Baixa
+  Media
+  Alta
+  Urgente
 }

@@ -130,9 +130,20 @@ exports.Prisma.LoginScalarFieldEnum = {
 
 exports.Prisma.ChamadoScalarFieldEnum = {
   id: 'id',
+  nome: 'nome',
+  email: 'email',
+  telefone: 'telefone',
+  setor: 'setor',
   titulo: 'titulo',
   descricao: 'descricao',
   prioridade: 'prioridade',
+  cep: 'cep',
+  rua: 'rua',
+  numero: 'numero',
+  complemento: 'complemento',
+  bairro: 'bairro',
+  cidade: 'cidade',
+  estado: 'estado',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -148,13 +159,39 @@ exports.Prisma.LoginOrderByRelevanceFieldEnum = {
   senha: 'senha'
 };
 
-exports.Prisma.ChamadoOrderByRelevanceFieldEnum = {
-  titulo: 'titulo',
-  descricao: 'descricao',
-  prioridade: 'prioridade',
-  status: 'status'
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
+exports.Prisma.ChamadoOrderByRelevanceFieldEnum = {
+  nome: 'nome',
+  email: 'email',
+  telefone: 'telefone',
+  setor: 'setor',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  cep: 'cep',
+  rua: 'rua',
+  numero: 'numero',
+  complemento: 'complemento',
+  bairro: 'bairro',
+  cidade: 'cidade',
+  estado: 'estado'
+};
+exports.Prioridade = exports.$Enums.Prioridade = {
+  Baixa: 'Baixa',
+  Media: 'Media',
+  Alta: 'Alta',
+  Urgente: 'Urgente'
+};
+
+exports.Status = exports.$Enums.Status = {
+  Aberto: 'Aberto',
+  Em_Atendimento: 'Em_Atendimento',
+  Finalizado: 'Finalizado',
+  Cancelado: 'Cancelado'
+};
 
 exports.Prisma.ModelName = {
   Login: 'Login',

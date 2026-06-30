@@ -25,6 +25,39 @@ export type Login = $Result.DefaultSelection<Prisma.$LoginPayload>
 export type Chamado = $Result.DefaultSelection<Prisma.$ChamadoPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const Status: {
+  Aberto: 'Aberto',
+  Em_Atendimento: 'Em_Atendimento',
+  Finalizado: 'Finalizado',
+  Cancelado: 'Cancelado'
+};
+
+export type Status = (typeof Status)[keyof typeof Status]
+
+
+export const Prioridade: {
+  Baixa: 'Baixa',
+  Media: 'Media',
+  Alta: 'Alta',
+  Urgente: 'Urgente'
+};
+
+export type Prioridade = (typeof Prioridade)[keyof typeof Prioridade]
+
+}
+
+export type Status = $Enums.Status
+
+export const Status: typeof $Enums.Status
+
+export type Prioridade = $Enums.Prioridade
+
+export const Prioridade: typeof $Enums.Prioridade
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -1863,29 +1896,62 @@ export namespace Prisma {
 
   export type ChamadoMinAggregateOutputType = {
     id: number | null
+    nome: string | null
+    email: string | null
+    telefone: string | null
+    setor: string | null
     titulo: string | null
     descricao: string | null
-    prioridade: string | null
-    status: string | null
+    prioridade: $Enums.Prioridade | null
+    cep: string | null
+    rua: string | null
+    numero: string | null
+    complemento: string | null
+    bairro: string | null
+    cidade: string | null
+    estado: string | null
+    status: $Enums.Status | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type ChamadoMaxAggregateOutputType = {
     id: number | null
+    nome: string | null
+    email: string | null
+    telefone: string | null
+    setor: string | null
     titulo: string | null
     descricao: string | null
-    prioridade: string | null
-    status: string | null
+    prioridade: $Enums.Prioridade | null
+    cep: string | null
+    rua: string | null
+    numero: string | null
+    complemento: string | null
+    bairro: string | null
+    cidade: string | null
+    estado: string | null
+    status: $Enums.Status | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type ChamadoCountAggregateOutputType = {
     id: number
+    nome: number
+    email: number
+    telefone: number
+    setor: number
     titulo: number
     descricao: number
     prioridade: number
+    cep: number
+    rua: number
+    numero: number
+    complemento: number
+    bairro: number
+    cidade: number
+    estado: number
     status: number
     createdAt: number
     updatedAt: number
@@ -1903,9 +1969,20 @@ export namespace Prisma {
 
   export type ChamadoMinAggregateInputType = {
     id?: true
+    nome?: true
+    email?: true
+    telefone?: true
+    setor?: true
     titulo?: true
     descricao?: true
     prioridade?: true
+    cep?: true
+    rua?: true
+    numero?: true
+    complemento?: true
+    bairro?: true
+    cidade?: true
+    estado?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -1913,9 +1990,20 @@ export namespace Prisma {
 
   export type ChamadoMaxAggregateInputType = {
     id?: true
+    nome?: true
+    email?: true
+    telefone?: true
+    setor?: true
     titulo?: true
     descricao?: true
     prioridade?: true
+    cep?: true
+    rua?: true
+    numero?: true
+    complemento?: true
+    bairro?: true
+    cidade?: true
+    estado?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -1923,9 +2011,20 @@ export namespace Prisma {
 
   export type ChamadoCountAggregateInputType = {
     id?: true
+    nome?: true
+    email?: true
+    telefone?: true
+    setor?: true
     titulo?: true
     descricao?: true
     prioridade?: true
+    cep?: true
+    rua?: true
+    numero?: true
+    complemento?: true
+    bairro?: true
+    cidade?: true
+    estado?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -2020,10 +2119,21 @@ export namespace Prisma {
 
   export type ChamadoGroupByOutputType = {
     id: number
+    nome: string
+    email: string
+    telefone: string
+    setor: string
     titulo: string
     descricao: string
-    prioridade: string
-    status: string
+    prioridade: $Enums.Prioridade
+    cep: string
+    rua: string
+    numero: string
+    complemento: string | null
+    bairro: string
+    cidade: string
+    estado: string
+    status: $Enums.Status
     createdAt: Date
     updatedAt: Date
     _count: ChamadoCountAggregateOutputType | null
@@ -2049,9 +2159,20 @@ export namespace Prisma {
 
   export type ChamadoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    nome?: boolean
+    email?: boolean
+    telefone?: boolean
+    setor?: boolean
     titulo?: boolean
     descricao?: boolean
     prioridade?: boolean
+    cep?: boolean
+    rua?: boolean
+    numero?: boolean
+    complemento?: boolean
+    bairro?: boolean
+    cidade?: boolean
+    estado?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2061,25 +2182,47 @@ export namespace Prisma {
 
   export type ChamadoSelectScalar = {
     id?: boolean
+    nome?: boolean
+    email?: boolean
+    telefone?: boolean
+    setor?: boolean
     titulo?: boolean
     descricao?: boolean
     prioridade?: boolean
+    cep?: boolean
+    rua?: boolean
+    numero?: boolean
+    complemento?: boolean
+    bairro?: boolean
+    cidade?: boolean
+    estado?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ChamadoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "titulo" | "descricao" | "prioridade" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["chamado"]>
+  export type ChamadoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "email" | "telefone" | "setor" | "titulo" | "descricao" | "prioridade" | "cep" | "rua" | "numero" | "complemento" | "bairro" | "cidade" | "estado" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["chamado"]>
 
   export type $ChamadoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Chamado"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      nome: string
+      email: string
+      telefone: string
+      setor: string
       titulo: string
       descricao: string
-      prioridade: string
-      status: string
+      prioridade: $Enums.Prioridade
+      cep: string
+      rua: string
+      numero: string
+      complemento: string | null
+      bairro: string
+      cidade: string
+      estado: string
+      status: $Enums.Status
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["chamado"]>
@@ -2452,10 +2595,21 @@ export namespace Prisma {
    */
   interface ChamadoFieldRefs {
     readonly id: FieldRef<"Chamado", 'Int'>
+    readonly nome: FieldRef<"Chamado", 'String'>
+    readonly email: FieldRef<"Chamado", 'String'>
+    readonly telefone: FieldRef<"Chamado", 'String'>
+    readonly setor: FieldRef<"Chamado", 'String'>
     readonly titulo: FieldRef<"Chamado", 'String'>
     readonly descricao: FieldRef<"Chamado", 'String'>
-    readonly prioridade: FieldRef<"Chamado", 'String'>
-    readonly status: FieldRef<"Chamado", 'String'>
+    readonly prioridade: FieldRef<"Chamado", 'Prioridade'>
+    readonly cep: FieldRef<"Chamado", 'String'>
+    readonly rua: FieldRef<"Chamado", 'String'>
+    readonly numero: FieldRef<"Chamado", 'String'>
+    readonly complemento: FieldRef<"Chamado", 'String'>
+    readonly bairro: FieldRef<"Chamado", 'String'>
+    readonly cidade: FieldRef<"Chamado", 'String'>
+    readonly estado: FieldRef<"Chamado", 'String'>
+    readonly status: FieldRef<"Chamado", 'Status'>
     readonly createdAt: FieldRef<"Chamado", 'DateTime'>
     readonly updatedAt: FieldRef<"Chamado", 'DateTime'>
   }
@@ -2805,9 +2959,20 @@ export namespace Prisma {
 
   export const ChamadoScalarFieldEnum: {
     id: 'id',
+    nome: 'nome',
+    email: 'email',
+    telefone: 'telefone',
+    setor: 'setor',
     titulo: 'titulo',
     descricao: 'descricao',
     prioridade: 'prioridade',
+    cep: 'cep',
+    rua: 'rua',
+    numero: 'numero',
+    complemento: 'complemento',
+    bairro: 'bairro',
+    cidade: 'cidade',
+    estado: 'estado',
     status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -2832,11 +2997,28 @@ export namespace Prisma {
   export type LoginOrderByRelevanceFieldEnum = (typeof LoginOrderByRelevanceFieldEnum)[keyof typeof LoginOrderByRelevanceFieldEnum]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   export const ChamadoOrderByRelevanceFieldEnum: {
+    nome: 'nome',
+    email: 'email',
+    telefone: 'telefone',
+    setor: 'setor',
     titulo: 'titulo',
     descricao: 'descricao',
-    prioridade: 'prioridade',
-    status: 'status'
+    cep: 'cep',
+    rua: 'rua',
+    numero: 'numero',
+    complemento: 'complemento',
+    bairro: 'bairro',
+    cidade: 'cidade',
+    estado: 'estado'
   };
 
   export type ChamadoOrderByRelevanceFieldEnum = (typeof ChamadoOrderByRelevanceFieldEnum)[keyof typeof ChamadoOrderByRelevanceFieldEnum]
@@ -2865,6 +3047,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'Prioridade'
+   */
+  export type EnumPrioridadeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Prioridade'>
+    
+
+
+  /**
+   * Reference to a field of type 'Status'
+   */
+  export type EnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status'>
     
 
 
@@ -2933,19 +3129,41 @@ export namespace Prisma {
     OR?: ChamadoWhereInput[]
     NOT?: ChamadoWhereInput | ChamadoWhereInput[]
     id?: IntFilter<"Chamado"> | number
+    nome?: StringFilter<"Chamado"> | string
+    email?: StringFilter<"Chamado"> | string
+    telefone?: StringFilter<"Chamado"> | string
+    setor?: StringFilter<"Chamado"> | string
     titulo?: StringFilter<"Chamado"> | string
     descricao?: StringFilter<"Chamado"> | string
-    prioridade?: StringFilter<"Chamado"> | string
-    status?: StringFilter<"Chamado"> | string
+    prioridade?: EnumPrioridadeFilter<"Chamado"> | $Enums.Prioridade
+    cep?: StringFilter<"Chamado"> | string
+    rua?: StringFilter<"Chamado"> | string
+    numero?: StringFilter<"Chamado"> | string
+    complemento?: StringNullableFilter<"Chamado"> | string | null
+    bairro?: StringFilter<"Chamado"> | string
+    cidade?: StringFilter<"Chamado"> | string
+    estado?: StringFilter<"Chamado"> | string
+    status?: EnumStatusFilter<"Chamado"> | $Enums.Status
     createdAt?: DateTimeFilter<"Chamado"> | Date | string
     updatedAt?: DateTimeFilter<"Chamado"> | Date | string
   }
 
   export type ChamadoOrderByWithRelationInput = {
     id?: SortOrder
+    nome?: SortOrder
+    email?: SortOrder
+    telefone?: SortOrder
+    setor?: SortOrder
     titulo?: SortOrder
     descricao?: SortOrder
     prioridade?: SortOrder
+    cep?: SortOrder
+    rua?: SortOrder
+    numero?: SortOrder
+    complemento?: SortOrderInput | SortOrder
+    bairro?: SortOrder
+    cidade?: SortOrder
+    estado?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -2957,19 +3175,41 @@ export namespace Prisma {
     AND?: ChamadoWhereInput | ChamadoWhereInput[]
     OR?: ChamadoWhereInput[]
     NOT?: ChamadoWhereInput | ChamadoWhereInput[]
+    nome?: StringFilter<"Chamado"> | string
+    email?: StringFilter<"Chamado"> | string
+    telefone?: StringFilter<"Chamado"> | string
+    setor?: StringFilter<"Chamado"> | string
     titulo?: StringFilter<"Chamado"> | string
     descricao?: StringFilter<"Chamado"> | string
-    prioridade?: StringFilter<"Chamado"> | string
-    status?: StringFilter<"Chamado"> | string
+    prioridade?: EnumPrioridadeFilter<"Chamado"> | $Enums.Prioridade
+    cep?: StringFilter<"Chamado"> | string
+    rua?: StringFilter<"Chamado"> | string
+    numero?: StringFilter<"Chamado"> | string
+    complemento?: StringNullableFilter<"Chamado"> | string | null
+    bairro?: StringFilter<"Chamado"> | string
+    cidade?: StringFilter<"Chamado"> | string
+    estado?: StringFilter<"Chamado"> | string
+    status?: EnumStatusFilter<"Chamado"> | $Enums.Status
     createdAt?: DateTimeFilter<"Chamado"> | Date | string
     updatedAt?: DateTimeFilter<"Chamado"> | Date | string
   }, "id">
 
   export type ChamadoOrderByWithAggregationInput = {
     id?: SortOrder
+    nome?: SortOrder
+    email?: SortOrder
+    telefone?: SortOrder
+    setor?: SortOrder
     titulo?: SortOrder
     descricao?: SortOrder
     prioridade?: SortOrder
+    cep?: SortOrder
+    rua?: SortOrder
+    numero?: SortOrder
+    complemento?: SortOrderInput | SortOrder
+    bairro?: SortOrder
+    cidade?: SortOrder
+    estado?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -2985,10 +3225,21 @@ export namespace Prisma {
     OR?: ChamadoScalarWhereWithAggregatesInput[]
     NOT?: ChamadoScalarWhereWithAggregatesInput | ChamadoScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Chamado"> | number
+    nome?: StringWithAggregatesFilter<"Chamado"> | string
+    email?: StringWithAggregatesFilter<"Chamado"> | string
+    telefone?: StringWithAggregatesFilter<"Chamado"> | string
+    setor?: StringWithAggregatesFilter<"Chamado"> | string
     titulo?: StringWithAggregatesFilter<"Chamado"> | string
     descricao?: StringWithAggregatesFilter<"Chamado"> | string
-    prioridade?: StringWithAggregatesFilter<"Chamado"> | string
-    status?: StringWithAggregatesFilter<"Chamado"> | string
+    prioridade?: EnumPrioridadeWithAggregatesFilter<"Chamado"> | $Enums.Prioridade
+    cep?: StringWithAggregatesFilter<"Chamado"> | string
+    rua?: StringWithAggregatesFilter<"Chamado"> | string
+    numero?: StringWithAggregatesFilter<"Chamado"> | string
+    complemento?: StringNullableWithAggregatesFilter<"Chamado"> | string | null
+    bairro?: StringWithAggregatesFilter<"Chamado"> | string
+    cidade?: StringWithAggregatesFilter<"Chamado"> | string
+    estado?: StringWithAggregatesFilter<"Chamado"> | string
+    status?: EnumStatusWithAggregatesFilter<"Chamado"> | $Enums.Status
     createdAt?: DateTimeWithAggregatesFilter<"Chamado"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Chamado"> | Date | string
   }
@@ -3040,68 +3291,145 @@ export namespace Prisma {
   }
 
   export type ChamadoCreateInput = {
+    nome: string
+    email: string
+    telefone: string
+    setor: string
     titulo: string
     descricao: string
-    prioridade: string
-    status: string
+    prioridade: $Enums.Prioridade
+    cep: string
+    rua: string
+    numero: string
+    complemento?: string | null
+    bairro: string
+    cidade: string
+    estado: string
+    status: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ChamadoUncheckedCreateInput = {
     id?: number
+    nome: string
+    email: string
+    telefone: string
+    setor: string
     titulo: string
     descricao: string
-    prioridade: string
-    status: string
+    prioridade: $Enums.Prioridade
+    cep: string
+    rua: string
+    numero: string
+    complemento?: string | null
+    bairro: string
+    cidade: string
+    estado: string
+    status: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ChamadoUpdateInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    setor?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
-    prioridade?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    prioridade?: EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
+    cep?: StringFieldUpdateOperationsInput | string
+    rua?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    complemento?: NullableStringFieldUpdateOperationsInput | string | null
+    bairro?: StringFieldUpdateOperationsInput | string
+    cidade?: StringFieldUpdateOperationsInput | string
+    estado?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ChamadoUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    setor?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
-    prioridade?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    prioridade?: EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
+    cep?: StringFieldUpdateOperationsInput | string
+    rua?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    complemento?: NullableStringFieldUpdateOperationsInput | string | null
+    bairro?: StringFieldUpdateOperationsInput | string
+    cidade?: StringFieldUpdateOperationsInput | string
+    estado?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ChamadoCreateManyInput = {
     id?: number
+    nome: string
+    email: string
+    telefone: string
+    setor: string
     titulo: string
     descricao: string
-    prioridade: string
-    status: string
+    prioridade: $Enums.Prioridade
+    cep: string
+    rua: string
+    numero: string
+    complemento?: string | null
+    bairro: string
+    cidade: string
+    estado: string
+    status: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ChamadoUpdateManyMutationInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    setor?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
-    prioridade?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    prioridade?: EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
+    cep?: StringFieldUpdateOperationsInput | string
+    rua?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    complemento?: NullableStringFieldUpdateOperationsInput | string | null
+    bairro?: StringFieldUpdateOperationsInput | string
+    cidade?: StringFieldUpdateOperationsInput | string
+    estado?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ChamadoUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    setor?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
-    prioridade?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    prioridade?: EnumPrioridadeFieldUpdateOperationsInput | $Enums.Prioridade
+    cep?: StringFieldUpdateOperationsInput | string
+    rua?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    complemento?: NullableStringFieldUpdateOperationsInput | string | null
+    bairro?: StringFieldUpdateOperationsInput | string
+    cidade?: StringFieldUpdateOperationsInput | string
+    estado?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3226,6 +3554,40 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type EnumPrioridadeFilter<$PrismaModel = never> = {
+    equals?: $Enums.Prioridade | EnumPrioridadeFieldRefInput<$PrismaModel>
+    in?: $Enums.Prioridade[]
+    notIn?: $Enums.Prioridade[]
+    not?: NestedEnumPrioridadeFilter<$PrismaModel> | $Enums.Prioridade
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type EnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[]
+    notIn?: $Enums.Status[]
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type ChamadoOrderByRelevanceInput = {
     fields: ChamadoOrderByRelevanceFieldEnum | ChamadoOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -3234,9 +3596,20 @@ export namespace Prisma {
 
   export type ChamadoCountOrderByAggregateInput = {
     id?: SortOrder
+    nome?: SortOrder
+    email?: SortOrder
+    telefone?: SortOrder
+    setor?: SortOrder
     titulo?: SortOrder
     descricao?: SortOrder
     prioridade?: SortOrder
+    cep?: SortOrder
+    rua?: SortOrder
+    numero?: SortOrder
+    complemento?: SortOrder
+    bairro?: SortOrder
+    cidade?: SortOrder
+    estado?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3248,9 +3621,20 @@ export namespace Prisma {
 
   export type ChamadoMaxOrderByAggregateInput = {
     id?: SortOrder
+    nome?: SortOrder
+    email?: SortOrder
+    telefone?: SortOrder
+    setor?: SortOrder
     titulo?: SortOrder
     descricao?: SortOrder
     prioridade?: SortOrder
+    cep?: SortOrder
+    rua?: SortOrder
+    numero?: SortOrder
+    complemento?: SortOrder
+    bairro?: SortOrder
+    cidade?: SortOrder
+    estado?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3258,9 +3642,20 @@ export namespace Prisma {
 
   export type ChamadoMinOrderByAggregateInput = {
     id?: SortOrder
+    nome?: SortOrder
+    email?: SortOrder
+    telefone?: SortOrder
+    setor?: SortOrder
     titulo?: SortOrder
     descricao?: SortOrder
     prioridade?: SortOrder
+    cep?: SortOrder
+    rua?: SortOrder
+    numero?: SortOrder
+    complemento?: SortOrder
+    bairro?: SortOrder
+    cidade?: SortOrder
+    estado?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3268,6 +3663,44 @@ export namespace Prisma {
 
   export type ChamadoSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type EnumPrioridadeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Prioridade | EnumPrioridadeFieldRefInput<$PrismaModel>
+    in?: $Enums.Prioridade[]
+    notIn?: $Enums.Prioridade[]
+    not?: NestedEnumPrioridadeWithAggregatesFilter<$PrismaModel> | $Enums.Prioridade
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPrioridadeFilter<$PrismaModel>
+    _max?: NestedEnumPrioridadeFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[]
+    notIn?: $Enums.Status[]
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -3284,6 +3717,18 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type EnumPrioridadeFieldUpdateOperationsInput = {
+    set?: $Enums.Prioridade
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type EnumStatusFieldUpdateOperationsInput = {
+    set?: $Enums.Status
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3380,6 +3825,84 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPrioridadeFilter<$PrismaModel = never> = {
+    equals?: $Enums.Prioridade | EnumPrioridadeFieldRefInput<$PrismaModel>
+    in?: $Enums.Prioridade[]
+    notIn?: $Enums.Prioridade[]
+    not?: NestedEnumPrioridadeFilter<$PrismaModel> | $Enums.Prioridade
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedEnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[]
+    notIn?: $Enums.Status[]
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type NestedEnumPrioridadeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Prioridade | EnumPrioridadeFieldRefInput<$PrismaModel>
+    in?: $Enums.Prioridade[]
+    notIn?: $Enums.Prioridade[]
+    not?: NestedEnumPrioridadeWithAggregatesFilter<$PrismaModel> | $Enums.Prioridade
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPrioridadeFilter<$PrismaModel>
+    _max?: NestedEnumPrioridadeFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[]
+    notIn?: $Enums.Status[]
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
 

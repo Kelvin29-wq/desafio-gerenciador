@@ -102,9 +102,20 @@ exports.Prisma.LoginScalarFieldEnum = {
 
 exports.Prisma.ChamadoScalarFieldEnum = {
   id: 'id',
+  nome: 'nome',
+  email: 'email',
+  telefone: 'telefone',
+  setor: 'setor',
   titulo: 'titulo',
   descricao: 'descricao',
   prioridade: 'prioridade',
+  cep: 'cep',
+  rua: 'rua',
+  numero: 'numero',
+  complemento: 'complemento',
+  bairro: 'bairro',
+  cidade: 'cidade',
+  estado: 'estado',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -120,13 +131,39 @@ exports.Prisma.LoginOrderByRelevanceFieldEnum = {
   senha: 'senha'
 };
 
-exports.Prisma.ChamadoOrderByRelevanceFieldEnum = {
-  titulo: 'titulo',
-  descricao: 'descricao',
-  prioridade: 'prioridade',
-  status: 'status'
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
+exports.Prisma.ChamadoOrderByRelevanceFieldEnum = {
+  nome: 'nome',
+  email: 'email',
+  telefone: 'telefone',
+  setor: 'setor',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  cep: 'cep',
+  rua: 'rua',
+  numero: 'numero',
+  complemento: 'complemento',
+  bairro: 'bairro',
+  cidade: 'cidade',
+  estado: 'estado'
+};
+exports.Status = exports.$Enums.Status = {
+  Aberto: 'Aberto',
+  Em_Atendimento: 'Em_Atendimento',
+  Finalizado: 'Finalizado',
+  Cancelado: 'Cancelado'
+};
+
+exports.Prioridade = exports.$Enums.Prioridade = {
+  Baixa: 'Baixa',
+  Media: 'Media',
+  Alta: 'Alta',
+  Urgente: 'Urgente'
+};
 
 exports.Prisma.ModelName = {
   Login: 'Login',
@@ -143,7 +180,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\kaue\\Documents\\desafio-projeto\\desafio-gerenciador\\back-end\\src\\generated\\prisma",
+      "value": "C:\\Users\\kaue\\Documents\\desafio-projeto\\desafio-gerenciador\\backend\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -157,7 +194,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\kaue\\Documents\\desafio-projeto\\desafio-gerenciador\\back-end\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\kaue\\Documents\\desafio-projeto\\desafio-gerenciador\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -171,6 +208,7 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -179,13 +217,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Login {\n  id Int @id @default(autoincrement())\n\n  email String @unique\n\n  senha String\n\n  createdAt DateTime @default(now())\n}\n\nmodel Chamado {\n  id Int @id @default(autoincrement())\n\n  titulo String\n\n  descricao String\n\n  prioridade String\n\n  status String\n\n  createdAt DateTime @default(now())\n\n  updatedAt DateTime @updatedAt\n}\n",
-  "inlineSchemaHash": "b52c8af58432a55b1df2e6a2507cb652da296652e8a0ac23953392153169a9c6",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Login {\n  id Int @id @default(autoincrement())\n\n  email String @unique\n\n  senha String\n\n  createdAt DateTime @default(now())\n}\n\nmodel Chamado {\n  id Int @id @default(autoincrement())\n\n  nome     String\n  email    String\n  telefone String\n\n  setor String\n\n  titulo    String\n  descricao String\n\n  prioridade Prioridade\n\n  cep         String\n  rua         String\n  numero      String\n  complemento String?\n  bairro      String\n  cidade      String\n  estado      String\n\n  status    Status\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nenum Status {\n  Aberto\n  Em_Atendimento\n  Finalizado\n  Cancelado\n}\n\nenum Prioridade {\n  Baixa\n  Media\n  Alta\n  Urgente\n}\n",
+  "inlineSchemaHash": "e3e2d91d910b16d93b5750d7d7b12af7711b79390b4440a50c4b4beb9a2991c3",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Login\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"senha\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Chamado\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"titulo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"descricao\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"prioridade\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Login\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"senha\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Chamado\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"telefone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"setor\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"titulo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"descricao\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"prioridade\",\"kind\":\"enum\",\"type\":\"Prioridade\"},{\"name\":\"cep\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"rua\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"numero\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"complemento\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bairro\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cidade\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"estado\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"Status\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),
