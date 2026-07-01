@@ -49,7 +49,7 @@ model Chamado {
   cidade       String
   estado       String
 
-  status       Status     
+  status       Status     @default(Aberto)
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
 

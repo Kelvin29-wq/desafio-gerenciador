@@ -3305,7 +3305,7 @@ export namespace Prisma {
     bairro: string
     cidade: string
     estado: string
-    status: $Enums.Status
+    status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3326,7 +3326,7 @@ export namespace Prisma {
     bairro: string
     cidade: string
     estado: string
-    status: $Enums.Status
+    status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3388,7 +3388,7 @@ export namespace Prisma {
     bairro: string
     cidade: string
     estado: string
-    status: $Enums.Status
+    status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
   }

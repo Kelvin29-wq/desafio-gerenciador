@@ -24,7 +24,7 @@ class ChamadoController {
   async criar(req, res) {
 
     try {
-
+      
       const chamado = await chamadoService.criar(req.body);
 
       return res.status(201).json(chamado);

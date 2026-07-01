@@ -13,6 +13,18 @@ async function carregarChamados() {
 
     const chamados = await listarChamados();
 
+    const pesquisa = document.getElementById("pesquisa");
+
+    const texto = pesquisa.value.toLowerCase();
+
+    const filtrados = chamados.filter(chamado =>
+
+      chamado.nome.toLowerCase().includes(texto) ||
+
+      chamado.titulo.toLowerCase().includes(texto)
+
+    );
+
     const total = chamados.length;
 
     const abertos = chamados.filter(c => c.status === "Aberto").length;
@@ -33,7 +45,7 @@ async function carregarChamados() {
 
     tbody.innerHTML = "";
 
-    chamados.forEach(chamado => {
+    filtrados.forEach(chamado => {
 
       tbody.innerHTML += `
 
@@ -215,4 +227,6 @@ document.getElementById("btnSair").addEventListener("click", () => {
   window.location.href = "login.html";
 
 });
+
+document.getElementById("pesquisa").addEventListener("keyup", carregarChamados);
 
