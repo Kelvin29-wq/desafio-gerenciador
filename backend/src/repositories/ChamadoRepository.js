@@ -3,7 +3,11 @@ const prisma = require("../config/prisma");
 class ChamadoRepository {
 
   async listar() {
-    return await prisma.chamado.findMany();
+    return await prisma.chamado.findMany({
+      orderBy: {
+        prioridade: "desc",
+      }
+    });
   }
 
   async criar(dados) {

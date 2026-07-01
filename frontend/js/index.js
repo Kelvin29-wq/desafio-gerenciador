@@ -1,6 +1,3 @@
-// ============================
-// Buscar CEP
-// ============================
 
 const btnBuscarCep = document.getElementById("btnBuscarCep");
 
@@ -9,8 +6,11 @@ btnBuscarCep.addEventListener("click", async () => {
   const cep = document.getElementById("cep").value;
 
   if (!cep) {
-    alert("Digite um CEP.");
+
+    mostrarMensagem("Atenção", "Digite um CEP.", "⚠️");
+
     return;
+
   }
 
   try {
@@ -24,22 +24,21 @@ btnBuscarCep.addEventListener("click", async () => {
 
   } catch (error) {
 
-    alert(error.message);
+    mostrarMensagem("Erro", error.message, "❌");
 
   }
 
 });
 
 
-// ============================
-// Abrir Chamado
-// ============================
 
 const formulario = document.getElementById("formChamado");
 
 formulario.addEventListener("submit", async (event) => {
 
   event.preventDefault();
+
+ 
   const chamado = {
 
     nome: document.getElementById("nome").value,
@@ -68,9 +67,7 @@ formulario.addEventListener("submit", async (event) => {
 
     cidade: document.getElementById("cidade").value,
 
-    estado: document.getElementById("estado").value,
-
-    status: "Aberto"
+    estado: document.getElementById("estado").value
 
   };
 
@@ -78,13 +75,21 @@ formulario.addEventListener("submit", async (event) => {
 
     await criarChamado(chamado);
 
-    alert("Chamado aberto com sucesso!");
+    mostrarMensagem(
+      "Sucesso",
+      "Chamado aberto com sucesso!",
+      "✅"
+    );
 
     formulario.reset();
 
   } catch (error) {
 
-    alert(error.message);
+    mostrarMensagem(
+      "Erro",
+      error.message,
+      "❌"
+    );
 
   }
 

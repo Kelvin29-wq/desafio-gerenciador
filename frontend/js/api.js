@@ -1,11 +1,7 @@
-// URL base da API
+
 const API_URL = "http://localhost:3000";
 
-/* ===========================
-   CHAMADOS
-=========================== */
 
-// Criar chamado
 async function criarChamado(dados) {
 
   const resposta = await fetch(`${API_URL}/chamados`, {
@@ -24,7 +20,7 @@ async function criarChamado(dados) {
 
 }
 
-// Listar chamados
+
 async function listarChamados() {
 
   const resposta = await fetch(`${API_URL}/chamados`);
@@ -37,7 +33,7 @@ async function listarChamados() {
 
 }
 
-// Buscar chamado por ID
+
 async function buscarChamado(id) {
 
   const resposta = await fetch(`${API_URL}/chamados/${id}`);
@@ -50,7 +46,7 @@ async function buscarChamado(id) {
 
 }
 
-// Atualizar chamado
+
 async function atualizarChamado(id, dados) {
 
   const resposta = await fetch(`${API_URL}/chamados/${id}`, {
@@ -69,7 +65,7 @@ async function atualizarChamado(id, dados) {
 
 }
 
-// Excluir chamado
+
 async function excluirChamado(id) {
 
   const resposta = await fetch(`${API_URL}/chamados/${id}`, {
@@ -85,9 +81,7 @@ async function excluirChamado(id) {
 }
 
 
-/* ===========================
-   LOGIN
-=========================== */
+
 
 async function login(email, senha) {
 
@@ -111,10 +105,6 @@ async function login(email, senha) {
 }
 
 
-/* ===========================
-   VIA CEP
-=========================== */
-
 async function buscarCep(cep) {
 
   const resposta = await fetch(`${API_URL}/cep/${cep}`);
@@ -124,5 +114,23 @@ async function buscarCep(cep) {
   }
 
   return await resposta.json();
+
+}
+
+function mostrarMensagem(titulo, texto, icone = "✅") {
+
+  document.getElementById("tituloModal").textContent = titulo;
+
+  document.getElementById("textoModal").textContent = texto;
+
+  document.getElementById("iconeModal").textContent = icone;
+
+  document.getElementById("modalMensagem").classList.remove("hidden");
+
+}
+
+function fecharMensagem() {
+
+  document.getElementById("modalMensagem").classList.add("hidden");
 
 }

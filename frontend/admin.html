@@ -160,9 +160,53 @@
 
   </div>
 
+  <div id="modalExcluir" class="modal hidden">
+
+    <div class="modal-content">
+
+      <h2>⚠️ Confirmar Exclusão</h2>
+
+      <p>Tem certeza que deseja excluir este chamado?</p>
+
+      <input type="hidden" id="idExcluir">
+
+      <div class="modal-actions">
+
+        <button onclick="fecharModalExcluir()">
+          Cancelar
+        </button>
+
+        <button class="btn-excluir" onclick="confirmarExclusao()">
+          Excluir
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
   <div id="toast" class="toast"></div>
 
+  <div id="modalMensagem" class="modal-msg hidden">
+
+    <div class="modal-msg-content">
+
+      <div id="iconeModal">✅</div>
+
+      <h2 id="tituloModal">Sucesso</h2>
+
+      <p id="textoModal"></p>
+
+      <button onclick="fecharMensagem()">OK</button>
+
+    </div>
+
+  </div>
+
   <script src="js/api.js"></script>
+
+  <script src="js/modal.js"></script>
 
   <script src="js/admin.js"></script>
 

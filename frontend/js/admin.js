@@ -1,31 +1,17 @@
-// Carrega os chamados quando a página abrir
+
 document.addEventListener("DOMContentLoaded", () => {
 
   carregarChamados();
 
 });
 
-// ===============================
-// Carregar Chamados
-// ===============================
+
 
 async function carregarChamados() {
 
   try {
 
     const chamados = await listarChamados();
-
-    const pesquisa = document.getElementById("pesquisa");
-
-    const texto = pesquisa ? pesquisa.value.toLowerCase() : "";
-
-    const filtrados = chamados.filter(chamado =>
-
-      chamado.nome.toLowerCase().includes(texto) ||
-
-      chamado.titulo.toLowerCase().includes(texto)
-
-    );
 
     const total = chamados.length;
 
@@ -47,7 +33,7 @@ async function carregarChamados() {
 
     tbody.innerHTML = "";
 
-    filtrados.forEach(chamado => {
+    chamados.forEach(chamado => {
 
       tbody.innerHTML += `
 
@@ -96,57 +82,63 @@ async function carregarChamados() {
     });
 
   } catch (error) {
-
-    alert(error.message);
+    mostrarMensagem(
+      "Erro",
+      error.message,
+      "❌"
+    );
 
   }
 
 }
 
-function mostrarToast(texto) {
 
-  const toast = document.getElementById("toast");
 
-  toast.textContent = texto;
+function excluir(id) {
 
-  toast.classList.add("show");
+  document.getElementById("idExcluir").value = id;
 
-  setTimeout(() => {
-
-    toast.classList.remove("show");
-
-  }, 2500);
+  document.getElementById("modalExcluir").classList.remove("hidden");
 
 }
-// ===============================
-// Excluir
-// ===============================
 
-async function excluir(id) {
+function fecharModalExcluir() {
 
-  const confirmar = confirm("Deseja realmente excluir este chamado?");
+  document.getElementById("modalExcluir").classList.add("hidden");
 
-  if (!confirmar) return;
+}
+
+async function confirmarExclusao() {
+
+  const id = document.getElementById("idExcluir").value;
 
   try {
 
     await excluirChamado(id);
 
-    mostrarToast("Chamado excluído com sucesso!");
+    fecharModalExcluir();
+
+    mostrarMensagem(
+      "Excluído",
+      "Chamado excluído com sucesso!",
+      "🗑️"
+    );
 
     carregarChamados();
 
   } catch (error) {
 
-    alert(error.message);
+    mostrarMensagem(
+      "Erro",
+      error.message,
+      "❌"
+    );
 
   }
 
 }
 
-// ===============================
-// Editar (vamos implementar depois)
-// ===============================
+
 
 async function editarChamado(id) {
 
@@ -163,7 +155,11 @@ async function editarChamado(id) {
 
   } catch (error) {
 
-    alert(error.message);
+    mostrarMensagem(
+      "Erro",
+      error.message,
+      "❌"
+    );
 
   }
 
@@ -190,7 +186,11 @@ async function salvarEdicao() {
 
     await atualizarChamado(id, dados);
 
-    alert("Chamado atualizado com sucesso!");
+    mostrarMensagem(
+      "Atualizado",
+      "Chamado atualizado com sucesso!",
+      "✏️"
+    );
 
     fecharModal();
 
@@ -198,15 +198,17 @@ async function salvarEdicao() {
 
   } catch (error) {
 
-    alert(error.message);
+    mostrarMensagem(
+      "Erro",
+      error.message,
+      "❌"
+    );
 
   }
 
 }
 
-// ===============================
-// Sair
-// ===============================
+
 
 document.getElementById("btnSair").addEventListener("click", () => {
 
@@ -214,4 +216,3 @@ document.getElementById("btnSair").addEventListener("click", () => {
 
 });
 
-document.getElementById("pesquisa").addEventListener("keyup", carregarChamados);
